@@ -1,14 +1,16 @@
+require("dotenv").config();
+module.exports =
 {
   "development": {
     "username": "root",
-    "password": "eCRaWa",
+    "password": process.env.SQL_PASS,
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "process.env.SQL_PASS",
+    "password": process.env.SQL_PASS,
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",

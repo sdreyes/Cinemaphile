@@ -1,8 +1,21 @@
 console.log("hi");
 
 $(function() {
+    $("#logout").on("click", function(event) {
+        $.ajax({
+            url: "/logout",
+            type: "GET",
+            success: function(result){
+                console.log("logged out");
+                location.reload();
+            },
+            error: function(err) {
+                console.log("Error");
+            }
+        });
+    });
     $("#signup-btn").on("click", function(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         var newUser = {
             username: $("#username-input").val().trim(),
@@ -17,7 +30,7 @@ $(function() {
         });
     });
     $("#signin-btn").on("click", function(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         var user = {
             username: $("#username-input").val().trim(),

@@ -14,7 +14,9 @@ exports.dashboard = function(req, res) {
 };
 
 exports.logout = function(req, res) {
+    console.log("hello I am authcontroller logout");
     req.session.destroy(function(err) {
-        res.redirect("/");
+        console.log("logged out");
     });
+    res.redirect("/signin");
 };

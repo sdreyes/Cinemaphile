@@ -19,14 +19,14 @@ $(function() {
     $("#signin-btn").on("click", function(event) {
         event.preventDefault();
 
-        var newUser = {
+        var user = {
             username: $("#username-input").val().trim(),
             password: $("#password-input").val().trim()
         };
 
         $.ajax("/signin", {
             type: "POST",
-            data: newUser
+            data: user
         }).then(function() {
             console.log("it worked");
         });

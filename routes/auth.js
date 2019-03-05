@@ -1,8 +1,8 @@
 var authController = require("../controllers/authcontroller.js");
 var db = require("../models");
- 
+
 module.exports = function(app, passport) {
- 
+
     app.get("/signup", authController.signup);
  
     app.get("/signin", authController.signin);
@@ -20,7 +20,7 @@ module.exports = function(app, passport) {
 
     app.post("/signin", passport.authenticate("local-signin", {
         successRedirect: "/404",
-        failureRedirect: "/dashboard",
+        failureRedirect: "/dashboard"
     }), function(req, res) {
         console.log("signin callback");
     });
@@ -28,6 +28,7 @@ module.exports = function(app, passport) {
     function isLoggedIn(req, res, next) {
         if (req.user) {
             console.log("req.user exists");
+            console.log(req.user.id);
             authController.dashboard(req, res);
         }
         else {

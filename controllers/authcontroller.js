@@ -18,5 +18,6 @@ exports.logout = function(req, res) {
     req.session.destroy(function(err) {
         console.log("logged out");
     });
-    res.redirect("/signin");
+    res.redirect("/");
 };
+

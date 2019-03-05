@@ -32,7 +32,7 @@ module.exports = function(app, passport) {
             authController.dashboard(req, res);
         }
         else {
-            res.redirect("/signin");
+            res.redirect("/");
             console.log("redirected");
         }
     }

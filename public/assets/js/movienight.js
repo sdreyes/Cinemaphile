@@ -18,8 +18,8 @@ $(function() {
         // event.preventDefault();
 
         var newUser = {
-            username: $("#username-input").val().trim(),
-            password: $("#password-input").val().trim()
+            username: $("#username-signup").val().trim(),
+            password: $("#password-signup").val().trim()
         };
 
         $.ajax("/signup", {
@@ -33,8 +33,8 @@ $(function() {
         // event.preventDefault();
 
         var user = {
-            username: $("#username-input").val().trim(),
-            password: $("#password-input").val().trim()
+            username: $("#username-signin").val().trim(),
+            password: $("#password-signin").val().trim()
         };
 
         $.ajax("/signin", {

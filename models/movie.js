@@ -12,6 +12,9 @@ module.exports = function (sequelize, Sequelize) {
         genre: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        image: {
+            type: Sequelize.TEXT,
         }
     });
     return Movie;

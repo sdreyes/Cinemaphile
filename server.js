@@ -5,6 +5,7 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var env = require("dotenv").load();
 var exphbs = require("express-handlebars");
+var PORT = process.env.PORT || 5000;
 
 //For BodyParser
 app.use(bodyParser.json());
@@ -47,7 +48,7 @@ models.sequelize.sync().then(function() {
     console.log(err, "Something went wrong with the Database Update!");
 });
  
-app.listen(process.env.PORT, function(err) {
+app.listen(PORT, function(err) {
     if (!err) {
         console.log("Site is live");
     }

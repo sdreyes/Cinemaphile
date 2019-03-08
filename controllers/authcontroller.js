@@ -10,7 +10,7 @@ exports.signin = function(req, res) {
 
 exports.dashboard = function(req, res) {
     console.log("this is the get dashboard request");
-    res.render("dashboard");
+    res.redirect("/watchlist");
 };
 
 exports.logout = function(req, res) {

@@ -1,7 +1,7 @@
 
 module.exports = function (sequelize, Sequelize) {
     var Movie = sequelize.define("movie", {
-        movies: {
+        title: {
             type: Sequelize.STRING,
             allowNull: false
         },

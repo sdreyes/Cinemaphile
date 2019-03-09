@@ -44,4 +44,29 @@ $(function() {
             console.log("it worked");
         });
     });
+
+    //ADDING ONCLICK FUNCTION FOR ADD MOVIE BUTTON
+    $("#addMovie-btn").on("click", function(event) {
+        event.preventDefault();
+
+        //CREATE OBJ WITH USER INPUT 
+        var movie = {
+            title: $("#title_newMovie").val().trim(),
+            year: $("#year_newMovie").val().trim(),
+            genre: $("#genre_newMovie").val().trim(),
+            image: $("#image_newMovie").val().trim()
+        };
+        
+        $.ajax("/addMovie", {
+            type: "POST",
+            data: movie
+        }).then(added);
+
+
+        function added(){
+            $("#addNewMovie_form").empty();
+            $("#addNewMovie").append("Movie added");
+        }
+
+    });
 });

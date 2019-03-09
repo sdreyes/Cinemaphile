@@ -11,11 +11,11 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/:movieTitle", function(req, res) {
+    app.get("/api/movie/:movieTitle", function(req, res) {
         var movieTitle = req.params.movieTitle;
         db.movie.findAll({
             where: {
-                movies: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("movies")), "LIKE", "%" + movieTitle + "%")
+                title: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("title")), "LIKE", "%" + movieTitle + "%")
             }
         }).then(function(dbMovies) {
             res.json(dbMovies);

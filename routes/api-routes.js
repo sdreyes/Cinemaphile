@@ -56,7 +56,7 @@ module.exports = function(app) {
         var movieTitle = req.params.movieTitle;
         db.movie.findAll({
             where: {
-                movies: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("movies")), "LIKE", "%" + movieTitle + "%")
+                title: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("title")), "LIKE", "%" + movieTitle + "%")
             }
         }).then(function(dbMovies) {
             res.json(dbMovies);

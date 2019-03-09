@@ -1,0 +1,70 @@
+body{
+    background-color:white;
+    }
+    
+    .button{
+        float:left;
+    }
+    #signUp{
+        color:white;
+        background-color: peru;
+        padding:15px;
+        border-radius:5px;
+        font-size: 20px;
+       
+    }
+    #signIn{
+        color:white;
+        background-color: peru;
+        padding:15px;
+        border-radius:5px;
+        margin:48px 25px 0px 80px;
+        font-size: 20px;
+    }
+    
+    #searchButton{
+        background-color: peru;
+        color:white;
+        border-color:peru;
+    }
+    h1{
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    
+    #box{
+        background-color:black;
+    }
+    
+    #page{
+        height:800px;
+    }
+    
+    
+    #logout{
+        background-color: peru;
+        color:white;
+        border-color: peru;
+        border-radius:5px;
+        padding:10px;
+        font-size: 20px;
+    }
+    h5{
+        color:white;
+    }
+    
+    #signin-btn{
+        color:white;
+        background-color: peru;
+        border-radius: 5px;
+    }
+    
+    #pw, #user{
+        color:peru;
+    
+    }
+    #signin {
+        margin-top:55px;
+    }
+    
+    

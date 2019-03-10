@@ -11,7 +11,7 @@ module.exports = function (app) {
             }).then(function (dbMovie) {
                 arr.push({
                     id: dbMovie.id,
-                    title: dbMovie.movies,
+                    title: dbMovie.title,
                     year: dbMovie.year,
                     genre: dbMovie.genre,
                     image: dbMovie.image
@@ -32,6 +32,7 @@ module.exports = function (app) {
                 watched: false
             }
         }).then(function (dbRelation) {
+
             findMovies(userWatchList, dbRelation, function (userWatchList) {
                 res.json(userWatchList);
             });

@@ -34,7 +34,11 @@ module.exports = function (app) {
         }).then(function (dbRelation) {
 
             findMovies(userWatchList, dbRelation, function (userWatchList) {
-                res.json(userWatchList);
+                var hbsObject = {
+                    movies: userWatchList
+                };
+                console.log(hbsObject);
+                res.render("watchlist", hbsObject);
             });
         });
     });
@@ -46,15 +50,46 @@ module.exports = function (app) {
                 userId: req.user.id,
                 watched: true
             }
-        }).then(function (dbRelation) {
-            findMovies(userCompletedList, dbRelation, function (userWatchList) {
-                res.json(userCompletedList);
+        }).then(function(dbRelation) {
+            findMovies(userCompletedList, dbRelation, function (userCompletedList) {
+                var hbsObject = {
+                    movies: userCompletedList
+                };
+                console.log(hbsObject);
+                res.render("completedlist", hbsObject);
             });
+        });
+    });
+
+    app.put("/api/completedlist", function(req, res) {
+        db.relation.update({
+            watched: false
+        }, {
+            where: {
+                movieId: req.body.id,
+                userId: req.user.id
+            }
+        }).then(function(dbRelation) {
+            res.json(dbRelation);
+        });
+    });
+
+    app.put("/api/watchlist", function(req, res) {
+        db.relation.update({
+            watched: true
+        }, {
+            where: {
+                movieId: req.body.id,
+                userId: req.user.id
+            }
+        }).then(function(dbRelation) {
+            res.json(dbRelation);
         });
     });
 
     app.get("/api/movie/:movieTitle", function (req, res) {
         var movieTitle = req.params.movieTitle;
+        var searchedMovies = [];
         db.movie.findAll({
             where: {
                 title: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("title")), "LIKE", "%" + movieTitle + "%")
@@ -63,7 +98,6 @@ module.exports = function (app) {
             res.json(dbMovies);
         });
     });
-
     // adding new movie to movie database
     app.post("/addMovie", function (req, res) {
         var newMovies = {
@@ -72,7 +106,7 @@ module.exports = function (app) {
             genre: req.body.genre,
             image: req.body.image
         };
-        db.movie.create(newMovies).then(function (dbMovies) {
+        db.movie.create(newMovies).then(function(dbMovies) {
             res.json(dbMovies);
         });
     });

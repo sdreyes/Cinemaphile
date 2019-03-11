@@ -46,7 +46,7 @@
   <div class="row" id="page">
     <div class="col-sm-3 text-center" id="box">
       <div>
-        <a href="#" data-display="signin" class="button" id="signIn">Sign In</a>
+        <a href="#" data-display="signin" class="btn mt-3" id="signIn">Sign In</a>
         <div id="signin" class="portBox">
           <form id="signin" name="signin" method="post" action="/signin">
             <label for="username">Username</label>
@@ -58,9 +58,8 @@
         </div>
       </div>
       <br>
-      <br>
       <div>
-        <a href="#" data-display="empty" class="button" id="signUp">Create an Account</a>
+        <a href="#" data-display="empty" class="btn" id="signUp">Create an Account</a>
         <div id="empty" class="portBox">
           <form id="signup" name="signup" method="post" action="/signup">
             <label for="username-signup">Username</label>
@@ -71,9 +70,11 @@
           </form>
         </div>
       </div>
-      <a href="/completedlist">Completed List</a>
       <br>
-      <a href="/watchlist">Watch List</a>
+      <a href="/completedlist" class="btn" id="completedlist-btn">Completed List</a>
+      <br>
+      <br>
+      <a href="/watchlist" class="btn" id="watchlist-btn">Watch List</a>
     </div>
     <div class="col-sm-9">
       <div class="container">

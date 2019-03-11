@@ -4,12 +4,13 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  
+
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/assets/js/movienight.js"></script>
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {{!-- CSS --}}
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 
@@ -19,19 +20,67 @@
   <script src="/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="/assets/js/portBox.slimscroll.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700' rel='stylesheet' type='text/css'>
-  <link href="/assets/css/page.css" rel="stylesheet"/>
+  <link href="/assets/css/page.css" rel="stylesheet" />
   <link href="/assets/css/portBox.css" rel="stylesheet" />
 
 
-{{!-- Dashboard --}}
+  {{!-- Dashboard --}}
   <script src="/assets/js/dashboard.js"></script>
 
 
-  <title>Home Page</title>
+  <title>Cinemaphile</title>
 </head>
 
 <body>
-  {{{body}}}
-</body>
+  <nav class="navbar navbar-light bg-dark">
+    <a class="navbar-brand">
+      <img src="/assets/images/icon.png" width="100" height="100" class="d-inline-block align-top" alt="Icon">
+    </a>
+    <h1> Movie Night</h1>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search Movie" id="searchbox" name="searchbox">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchButton">Search</button>
+    </form>
+  </nav>
 
+  <div class="row" id="page">
+    <div class="col-sm-3 text-center" id="box">
+      <div>
+        <a href="#" data-display="signin" class="button" id="signIn">Sign In</a>
+        <div id="signin" class="portBox">
+          <form id="signin" name="signin" method="post" action="/signin">
+            <label for="username">Username</label>
+            <input id="username-signin" class="text" name="username-signin" type="text" />
+            <label for="password">Password</label>
+            <input id="password-signin" name="password" type="password" />
+            <button class="btn" id="signin-btn">Sign In</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div>
+        <a href="#" data-display="empty" class="button" id="signUp">Create an Account</a>
+        <div id="empty" class="portBox">
+          <form id="signup" name="signup" method="post" action="/signup">
+            <label for="username-signup">Username</label>
+            <input class="text" id="username-signup" name="username-signup" type="text" />
+            <label for="password">Password</label>
+            <input name="password" id="password-signup" type="password" />
+            <button class="btn" id="signup-btn">Sign Up</button>
+          </form>
+        </div>
+      </div>
+      <a href="/completedlist">Completed List</a>
+      <br>
+      <a href="/watchlist">Watch List</a>
+    </div>
+    <div class="col-sm-9">
+      <div class="container">
+        <div class="row" id="search-results">
+          {{{body}}}
+        </div>
+      </div>
+    </div>
+</body>
 </html>

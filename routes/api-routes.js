@@ -25,40 +25,50 @@ module.exports = function (app) {
     };
 
     app.get("/watchlist", function (req, res) {
-        var userWatchList = [];
-        db.relation.findAll({
-            where: {
-                userId: req.user.id,
-                watched: false
-            }
-        }).then(function (dbRelation) {
-
-            findMovies(userWatchList, dbRelation, function (userWatchList) {
-                var hbsObject = {
-                    movies: userWatchList
-                };
-                console.log(hbsObject);
-                res.render("watchlist", hbsObject);
+        if (req.user) {
+            var userWatchList = [];
+            db.relation.findAll({
+                where: {
+                    userId: req.user.id,
+                    watched: false
+                }
+            }).then(function (dbRelation) {
+    
+                findMovies(userWatchList, dbRelation, function (userWatchList) {
+                    var hbsObject = {
+                        movies: userWatchList
+                    };
+                    console.log(hbsObject);
+                    res.render("watchlist", hbsObject);
+                });
             });
-        });
+        }
+        else {
+            res.render("index");
+        }
     });
 
     app.get("/completedlist", function (req, res) {
-        var userCompletedList = [];
-        db.relation.findAll({
-            where: {
-                userId: req.user.id,
-                watched: true
-            }
-        }).then(function(dbRelation) {
-            findMovies(userCompletedList, dbRelation, function (userCompletedList) {
-                var hbsObject = {
-                    movies: userCompletedList
-                };
-                console.log(hbsObject);
-                res.render("completedlist", hbsObject);
+        if (req.user) {
+            var userCompletedList = [];
+            db.relation.findAll({
+                where: {
+                    userId: req.user.id,
+                    watched: true
+                }
+            }).then(function(dbRelation) {
+                findMovies(userCompletedList, dbRelation, function (userCompletedList) {
+                    var hbsObject = {
+                        movies: userCompletedList
+                    };
+                    console.log(hbsObject);
+                    res.render("completedlist", hbsObject);
+                });
             });
-        });
+        }
+        else {
+            res.render("index");
+        }
     });
 
     app.put("/api/completedlist", function(req, res) {

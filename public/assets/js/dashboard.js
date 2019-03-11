@@ -6,7 +6,6 @@ $(function() {
 
         // Save the book they typed into the book-search input
         var movieSearched = $("#searchbox").val().trim();
-        console.log("yousearc");
 
         console.log(movieSearched);
         // Make an AJAX get request to our api, including the user's book in the url
@@ -23,21 +22,22 @@ $(function() {
     function renderMovies(data) {
         if (data.length !== 0) {
 
-            $("#stats").empty();
-            $("#stats").show();
+            $("#search-results").empty();
+            $("#search-results").show();
+            $("#search-results").append(div);
 
             for (var i = 0; i < data.length; i++) {
 
-                var div = $("<div>");
-
-                div.append("<h2>Title:" + data[i].title + "</h2>");
-                div.append("<p>Year: " + data[i].year + "</p>");
-                div.append("<p>Genre: " + data[i].genre + "</p>");
-                div.append("<img src= '"+ data[i].image + "'>");
+                var div = $("<div>")
+                div.addClass("col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center p-3");
+                div.append("<img src= '"+ data[i].image + "' height='250' width='auto'>");
+                div.append("<h4>" + data[i].title + "</h4>");
+                div.append("<h6>" + data[i].year + "</h6>");
+                div.append("<h6>" + data[i].genre + "</h6>");
                 div.append("<input type='checkbox' name='watched'> I have seen this movie </input>");
-                div.append("<button class='watch' data-id='" + data[i].id + "'> Add to Watchlist </button>");
+                div.append("<br><button class='watch btn' data-id='" + data[i].id + "'>Add to List</button>");
             
-                $("#stats").append(div);
+                $("#search-results").append(div);
 
             // }
             // $(".watch").click(function() {

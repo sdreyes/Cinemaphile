@@ -29,6 +29,41 @@ $(function() {
             console.log("it worked");
         });
     });
+
+    $(".move-to-watch-list").on("click", function(event) {
+        var movie = {
+            id: $(this).data("id")
+        };
+        event.preventDefault();
+        $.ajax("/api/completedlist", {
+            type: "PUT",
+            data: movie
+        }).then(
+            function() {
+                console.log("changed watch status");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+    $(".move-to-completed-list").on("click", function(event) {
+        var movie = {
+            id: $(this).data("id")
+        };
+        event.preventDefault();
+        $.ajax("/api/watchlist", {
+            type: "PUT",
+            data: movie
+        }).then(
+            function() {
+                console.log("changed watch status");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
     $("#signin-btn").on("click", function(event) {
         // event.preventDefault();
 

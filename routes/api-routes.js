@@ -25,36 +25,81 @@ module.exports = function (app) {
     };
 
     app.get("/watchlist", function (req, res) {
-        var userWatchList = [];
-        db.relation.findAll({
-            where: {
-                userId: req.user.id,
-                watched: false
-            }
-        }).then(function (dbRelation) {
-
-            findMovies(userWatchList, dbRelation, function (userWatchList) {
-                res.json(userWatchList);
+        if (req.user) {
+            var userWatchList = [];
+            db.relation.findAll({
+                where: {
+                    userId: req.user.id,
+                    watched: false
+                }
+            }).then(function (dbRelation) {
+    
+                findMovies(userWatchList, dbRelation, function (userWatchList) {
+                    var hbsObject = {
+                        movies: userWatchList
+                    };
+                    console.log(hbsObject);
+                    res.render("watchlist", hbsObject);
+                });
             });
-        });
+        }
+        else {
+            res.render("index");
+        }
     });
 
     app.get("/completedlist", function (req, res) {
-        var userCompletedList = [];
-        db.relation.findAll({
-            where: {
-                userId: req.user.id,
-                watched: true
-            }
-        }).then(function (dbRelation) {
-            findMovies(userCompletedList, dbRelation, function (userWatchList) {
-                res.json(userCompletedList);
+        if (req.user) {
+            var userCompletedList = [];
+            db.relation.findAll({
+                where: {
+                    userId: req.user.id,
+                    watched: true
+                }
+            }).then(function(dbRelation) {
+                findMovies(userCompletedList, dbRelation, function (userCompletedList) {
+                    var hbsObject = {
+                        movies: userCompletedList
+                    };
+                    console.log(hbsObject);
+                    res.render("completedlist", hbsObject);
+                });
             });
+        }
+        else {
+            res.render("index");
+        }
+    });
+
+    app.put("/api/completedlist", function(req, res) {
+        db.relation.update({
+            watched: false
+        }, {
+            where: {
+                movieId: req.body.id,
+                userId: req.user.id
+            }
+        }).then(function(dbRelation) {
+            res.json(dbRelation);
+        });
+    });
+
+    app.put("/api/watchlist", function(req, res) {
+        db.relation.update({
+            watched: true
+        }, {
+            where: {
+                movieId: req.body.id,
+                userId: req.user.id
+            }
+        }).then(function(dbRelation) {
+            res.json(dbRelation);
         });
     });
 
     app.get("/api/movie/:movieTitle", function (req, res) {
         var movieTitle = req.params.movieTitle;
+        var searchedMovies = [];
         db.movie.findAll({
             where: {
                 title: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("title")), "LIKE", "%" + movieTitle + "%")
@@ -63,7 +108,6 @@ module.exports = function (app) {
             res.json(dbMovies);
         });
     });
-
     // adding new movie to movie database
     app.post("/addMovie", function (req, res) {
         var newMovies = {
@@ -72,7 +116,7 @@ module.exports = function (app) {
             genre: req.body.genre,
             image: req.body.image
         };
-        db.movie.create(newMovies).then(function (dbMovies) {
+        db.movie.create(newMovies).then(function(dbMovies) {
             res.json(dbMovies);
         });
     });

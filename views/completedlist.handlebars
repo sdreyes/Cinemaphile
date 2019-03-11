@@ -1,0 +1,11 @@
+{{#each movies}}
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center p-3 text-center">
+    <img height="250" width="auto" src="{{image}}">
+    <h4>{{title}}</h4>
+    <h6>{{year}}</h6>
+    <h6>{{genre}}</h6>
+    <button class="btn move-to-watch-list" data-id="{{id}}">
+        Move to Watch List
+    </button>
+</div>
+{{/each}}

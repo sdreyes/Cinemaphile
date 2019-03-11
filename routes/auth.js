@@ -2,14 +2,10 @@ var authController = require("../controllers/authcontroller.js");
 var db = require("../models");
 
 module.exports = function(app, passport) {
-
-    app.get("/signup", authController.signup);
- 
-    app.get("/signin", authController.signin);
  
     app.post("/signup", passport.authenticate("local-signup", {
-        successRedirect: "/dashboard",
-        failureRedirect: "/signin"
+        successRedirect: "/",
+        failureRedirect: "/"
     }), function(req, res) {
         console.log("signup callback");
     });
@@ -20,7 +16,7 @@ module.exports = function(app, passport) {
 
     app.post("/signin", passport.authenticate("local-signin", {
         successRedirect: "/404",
-        failureRedirect: "/dashboard"
+        failureRedirect: "/"
     }), function(req, res) {
         console.log("signin callback");
     });

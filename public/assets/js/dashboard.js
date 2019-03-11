@@ -33,7 +33,7 @@ $(function() {
                 div.append("<img src= '"+ data[i].image + "' height='250' width='auto'>");
                 div.append("<h4>" + data[i].title + "</h4>");
                 div.append("<h6>" + data[i].year + "</h6>");
-                div.append("<h6>" + data[i].genre + "</h6>");
+                div.append("<h6>" + data[i].genre.replace(/\|/g, ", ") + "</h6>");
                 div.append("<input type='checkbox' name='watched'> I have seen this movie </input>");
                 div.append("<br><button class='watch btn' data-id='" + data[i].id + "'>Add to List</button>");
             

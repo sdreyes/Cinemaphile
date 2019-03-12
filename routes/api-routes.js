@@ -80,7 +80,7 @@ module.exports = function (app) {
                         user: req.user,
                         username: dbUser.username
                     };
-                    res.render("watchlist", hbsObject);
+                    res.render("completedlist", hbsObject);
                 }
                 else {
                     findMovies(userCompletedList, dbRelation, function (userCompletedList) {

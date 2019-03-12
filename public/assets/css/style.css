@@ -1,70 +1,65 @@
-body{
+html, body{
     background-color:white;
-    }
-    
-    /* .button{
-        float:left;
-    } */
-    #signUp{
-        color:white;
-        background-color: peru;
-        /* padding:15px;
-        border-radius:5px;
-        font-size: 20px; */
-       
-    }
-    #signIn{
-        color:white;
-        background-color: peru;
-        /* padding:15px;
-        border-radius:5px;
-        margin:48px 25px 0px 80px;
-        font-size: 20px; */
-    }
-    
-    #searchButton{
-        background-color: peru;
-        color:white;
-        border-color:peru;
-    }
-    h1{
+    height: 100%;
+}
+
+.row {
+    height: 100%;
+}
+
+#signUp{
     color:white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: peru;
+}
+
+#signIn{
+    color:white;
+    background-color: peru;
+}
+
+#searchButton{
+    background-color: peru;
+    color:white;
+    border-color:peru;
+}
+
+h1{
+color:white;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#box{
+    background-color:black;
+    height: 100%;
+}
+
+#logout{
+    background-color: peru;
+    color:white;
+    border-color: peru;
+}
+
+h5{
+    color:white;
+}
+
+#signin-btn, #watchlist-btn, #completedlist-btn{
+    color:white;
+    background-color: peru;
+}
+
+#pw, #user {
+    color:peru;
+
+}
+
+@media only screen and (max-width: 991px) {
+    #box, .row {
+        height: auto;
+        display: flex;
+        justify-content: space-around;
     }
-    
-    #box{
-        background-color:black;
+    h1 {
+        margin: 0;
     }
-    
-    #page{
-        height:1000px;
-    }
-    
-    
-    #logout{
-        background-color: peru;
-        color:white;
-        border-color: peru;
-        /* border-radius:5px;
-        padding:10px;
-        font-size: 20px; */
-    }
-    h5{
-        color:white;
-    }
-    
-    #signin-btn, #watchlist-btn, #completedlist-btn{
-        color:white;
-        background-color: peru;
-        /* border-radius: 5px; */
-    }
-    
-    #pw, #user {
-        color:peru;
-    
-    }
-    #signin {
-        /* margin-top:55px; */
-    }
-    
-    
+}

@@ -5,7 +5,13 @@
     <h6>{{year}}</h6>
     <h6>{{genre}}</h6>
     <button class="btn move-to-watch-list" data-id="{{id}}">
-        Move to Watch List
+        Unwatch
+    </button>
+    <button class="btn delete-from-list" data-id="{{id}}">
+        Delete
     </button>
 </div>
 {{/each}}
+{{#unless movies}}
+<h3 class="text-center"><br><br>You have no movies in your Completed List.</h3>
+{{/unless}}

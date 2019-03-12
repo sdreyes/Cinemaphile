@@ -7,7 +7,6 @@ module.exports = function (passport, user) {
     //serialize
     
     passport.serializeUser(function (user, done) {
-        console.log(user.id);
         done(null, user.id);
     });
     // deserialize user 
@@ -15,10 +14,8 @@ module.exports = function (passport, user) {
         User.findById(id).then(function (user) {
             if (user) {
                 done(null, user.get());
-                console.log("deserialize if");
             } else {
                 done(user.errors, null);
-                console.log("deserialize else");
             }
         });
     });
@@ -30,7 +27,6 @@ module.exports = function (passport, user) {
         },
         function (req, username, password, done) {
             var generateHash = function (password) {
-                console.log("hash generated");
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
             User.findOne({
@@ -38,9 +34,8 @@ module.exports = function (passport, user) {
                     username: username
                 }
             }).then(function (user) {
-                console.log("checking for username...");
                 if (user) {
-                    console.log("username is taken");
+                    console.log("Username is taken");
                     return done(null, false, {
                         message: "That username is already taken"
                     });
@@ -51,14 +46,12 @@ module.exports = function (passport, user) {
                         username: username,
                         password: userPassword
                     };
-                    console.log("username and password stored");
+                    console.log("Username and password stored");
                     User.create(data).then(function (newUser, created) {
                         if (!newUser) {
-                            console.log("welcome back");
                             return done(null, false);
                         }
                         if (newUser) {
-                            console.log("new user created");
                             return done(null, newUser);
                         }
                     });
@@ -98,8 +91,6 @@ module.exports = function (passport, user) {
                     });
                 }
                 var userinfo = user.get();
-                console.log("sign in successful");
-                console.log(userinfo);
                 return done(null, userinfo);
             }).catch(function (err) {
                 console.log("Error:", err);

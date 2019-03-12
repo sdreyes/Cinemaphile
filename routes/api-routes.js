@@ -36,7 +36,7 @@ module.exports = function (app) {
                 if (dbRelation.length === 0) {
                     db.user.findOne({
                         where: {
-                            id: req.useer.id
+                            id: req.user.id
                         }
                     }).then(function(dbUser) {
                         var hbsObject = {
@@ -83,7 +83,7 @@ module.exports = function (app) {
                 if (dbRelation.length === 0) {
                     db.user.findOne({
                         where: {
-                            id: req.useer.id
+                            id: req.user.id
                         }
                     }).then(function(dbUser) {
                         var hbsObject = {

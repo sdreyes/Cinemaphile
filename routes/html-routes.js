@@ -81,7 +81,6 @@ module.exports = function(app) {
                                 user: req.user,
                                 username: dbUser.username
                             };
-                            console.log(hbsObject);
                             res.render("watchlist", hbsObject);
                         });
                     });
@@ -128,7 +127,6 @@ module.exports = function(app) {
                                 user: req.user,
                                 username: dbUser.username
                             };
-                            console.log(hbsObject);
                             res.render("completedlist", hbsObject);
                         });
                     });

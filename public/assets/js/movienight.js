@@ -10,7 +10,7 @@ $(function() {
                 location.reload();
             },
             error: function(err) {
-                console.log("Error");
+                console.log("Error logging out");
             }
         });
     });
@@ -26,7 +26,7 @@ $(function() {
             type: "POST",
             data: newUser
         }).then(function() {
-            console.log("it worked");
+            console.log("New user signed up.");
         });
     });
 
@@ -40,7 +40,6 @@ $(function() {
             data: movie
         }).then(
             function() {
-                console.log("changed watch status");
                 // Reload the page to get the updated list
                 location.reload();
             }
@@ -57,7 +56,6 @@ $(function() {
             data: movie
         }).then(
             function() {
-                console.log("changed watch status");
                 // Reload the page to get the updated list
                 location.reload();
             }
@@ -65,8 +63,6 @@ $(function() {
     });
 
     $("#signin-btn").on("click", function(event) {
-        // event.preventDefault();
-
         var user = {
             username: $("#username-signin").val().trim(),
             password: $("#password-signin").val().trim()
@@ -76,7 +72,7 @@ $(function() {
             type: "POST",
             data: user
         }).then(function() {
-            console.log("it worked");
+            console.log("User signed in.");
         });
     });
 

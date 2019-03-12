@@ -70,7 +70,6 @@ module.exports = function (app) {
                         watched: req.body.watched
                     };
                     db.relation.create(newRelation).then(function(dbRelation) {
-                        console.log("Relationship added");
                         res.json({
                             code: "Successfully added"
                         });

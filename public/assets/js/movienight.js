@@ -31,10 +31,10 @@ $(function() {
     });
 
     $(".move-to-watch-list").on("click", function(event) {
+        event.preventDefault();
         var movie = {
             id: $(this).data("id")
         };
-        event.preventDefault();
         $.ajax("/api/completedlist", {
             type: "PUT",
             data: movie
@@ -48,10 +48,10 @@ $(function() {
     });
 
     $(".move-to-completed-list").on("click", function(event) {
+        event.preventDefault();
         var movie = {
             id: $(this).data("id")
         };
-        event.preventDefault();
         $.ajax("/api/watchlist", {
             type: "PUT",
             data: movie
@@ -77,6 +77,17 @@ $(function() {
             data: user
         }).then(function() {
             console.log("it worked");
+        });
+    });
+
+    $(".delete-from-list").on("click", function(event) {
+        event.preventDefault();
+        var movieId = $(this).data("id");
+        $.ajax({
+            type: "DELETE",
+            url: "/relation/" + movieId
+        }).then(function() {
+            location.reload();
         });
     });
 

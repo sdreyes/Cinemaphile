@@ -34,7 +34,12 @@ module.exports = function (app) {
                 }
             }).then(function (dbRelation) {
                 if (dbRelation.length === 0) {
-                    res.render("index");
+                    var hbsObject = {
+                        movies: [{}],
+                        user: req.user,
+                        username: dbUser.username
+                    };
+                    res.render("watchlist", hbsObject);
                 }
                 else {
                     findMovies(userWatchList, dbRelation, function (userWatchList) {
@@ -70,7 +75,12 @@ module.exports = function (app) {
                 }
             }).then(function(dbRelation) {
                 if (dbRelation.length === 0) {
-                    res.render("index");
+                    var hbsObject = {
+                        movies: [{}],
+                        user: req.user,
+                        username: dbUser.username
+                    };
+                    res.render("watchlist", hbsObject);
                 }
                 else {
                     findMovies(userCompletedList, dbRelation, function (userCompletedList) {

@@ -40,7 +40,7 @@ module.exports = function (app) {
                         }
                     }).then(function(dbUser) {
                         var hbsObject = {
-                            movies: [{}],
+                            movies: [],
                             user: req.user,
                             username: dbUser.username
                         };
@@ -87,7 +87,7 @@ module.exports = function (app) {
                         }
                     }).then(function(dbUser) {
                         var hbsObject = {
-                            movies: [{}],
+                            movies: [],
                             user: req.user,
                             username: dbUser.username
                         };

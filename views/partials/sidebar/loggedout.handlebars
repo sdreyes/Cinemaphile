@@ -1,18 +1,17 @@
 <div>
-    <a href="#" data-display="signin" class="btn mt-3" id="signIn">Sign In</a>
+    <a href="#" data-display="signin" class="btn m-3" id="signIn">Sign In</a>
     <div id="signin" class="portBox">
-        <form id="signin" name="signin" method="post" action="/signin">
+        <form id="signin" class="text-right" name="signin" method="post" action="/signin">
         <label for="username">Username</label>
         <input id="username-signin" class="text" name="username-signin" type="text" />
-        <label for="password">Password</label>
+        <br><label for="password">Password</label>
         <input id="password-signin" name="password" type="password" />
-        <button class="btn" id="signin-btn">Sign In</button>
+        <br><button class="btn" id="signin-btn">Sign In</button>
         </form>
     </div>
     </div>
-    <br>
     <div>
-    <a href="#" data-display="empty" class="btn" id="signUp">Create an Account</a>
+    <a href="#" data-display="empty" class="btn m-3" id="signUp">Create an Account</a>
     <div id="empty" class="portBox">
         <form id="signup" name="signup" method="post" action="/signup">
         <label for="username-signup">Username</label>

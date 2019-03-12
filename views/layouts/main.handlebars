@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="icon" type="image" href="assets/images/title.PNG">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -34,9 +35,9 @@
 <body>
   <nav class="navbar navbar-light bg-dark">
     <a class="navbar-brand">
-      <img src="/assets/images/icon.png" width="100" height="100" class="d-inline-block align-top" alt="Icon">
+    <img src="/assets/images/icon.png" width="100" height="100" class="d-inline-block align-top" alt="Icon">
     </a>
-    <h1> Movie Night</h1>
+    <h1>Cinemaphile</h1>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search Movie" id="searchbox" name="searchbox">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchButton">Search</button>
@@ -45,7 +46,14 @@
 
   <div class="row" id="page">
     <div class="col-sm-3 text-center" id="box">
-      <div>
+      {{#if user}}
+        {{> sidebar/loggedin}}
+      {{/if}}
+
+      {{#unless user}}
+        {{> sidebar/loggedout}}
+      {{/unless}}
+      {{!-- <div>
         <a href="#" data-display="signin" class="btn mt-3" id="signIn">Sign In</a>
         <div id="signin" class="portBox">
           <form id="signin" name="signin" method="post" action="/signin">
@@ -69,12 +77,11 @@
             <button class="btn" id="signup-btn">Sign Up</button>
           </form>
         </div>
-      </div>
+      </div> --}}
+      {{!-- <a href="/completedlist" class="btn" id="completedlist-btn">Completed List</a>
       <br>
-      <a href="/completedlist" class="btn" id="completedlist-btn">Completed List</a>
       <br>
-      <br>
-      <a href="/watchlist" class="btn" id="watchlist-btn">Watch List</a>
+      <a href="/watchlist" class="btn" id="watchlist-btn">Watch List</a> --}}
     </div>
     <div class="col-sm-9">
       <div class="container">

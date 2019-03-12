@@ -81,7 +81,7 @@ $(function() {
     });
 
     //ADDING ONCLICK FUNCTION FOR ADD MOVIE BUTTON
-    $("#addMovie-btn").on("click", function(event) {
+    $(document).on("click", "#addMovie-btn", function(event) {
         event.preventDefault();
 
         //CREATE OBJ WITH USER INPUT 
@@ -91,17 +91,24 @@ $(function() {
             genre: $("#genre_newMovie").val().trim(),
             image: $("#image_newMovie").val().trim()
         };
-        
-        $.ajax("/addMovie", {
-            type: "POST",
-            data: movie
-        }).then(added);
 
-
-        function added(){
-            $("#addNewMovie_form").empty();
-            $("#addNewMovie").append("Movie added");
+        if (movie.title.length === 0 || movie.year.length === 0 || movie.genre.length === 0 || movie.image.length === 0) {
+            alert("Please complete all fields");
         }
-
+        else if (movie.year.length !== 4) {
+            alert("Year must be a 4 digit number");
+        }
+        else {
+            $.ajax("/addMovie", {
+                type: "POST",
+                data: movie
+            }).then(added);
+    
+    
+            function added(){
+                $("#addNewMovie_form").empty();
+                $("#addNewMovie").append("Movie added");
+            }
+        }
     });
 });

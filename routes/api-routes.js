@@ -84,4 +84,16 @@ module.exports = function (app) {
             });
         }
     });
+    app.delete("/relation/:id", function(req, res) {
+        db.relation/destroy({
+            where: {
+                userId: req.user.id,
+                movieId: req.params.id
+            }
+        }).then(function(dbRelation) {
+            res.json({
+                code: "Movie deleted from your lists"
+            });
+        });
+    });
 };

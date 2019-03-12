@@ -13,7 +13,7 @@ module.exports = function (app) {
                     id: dbMovie.id,
                     title: dbMovie.title,
                     year: dbMovie.year,
-                    genre: dbMovie.genre,
+                    genre: dbMovie.genre.replace(/\|/g, ", "),
                     image: dbMovie.image
                 });
                 counter++;
@@ -33,14 +33,26 @@ module.exports = function (app) {
                     watched: false
                 }
             }).then(function (dbRelation) {
-    
-                findMovies(userWatchList, dbRelation, function (userWatchList) {
-                    var hbsObject = {
-                        movies: userWatchList
-                    };
-                    console.log(hbsObject);
-                    res.render("watchlist", hbsObject);
-                });
+                if (dbRelation.length === 0) {
+                    res.render("index");
+                }
+                else {
+                    findMovies(userWatchList, dbRelation, function (userWatchList) {
+                        db.user.findOne({
+                            where: {
+                                id: req.user.id
+                            }
+                        }). then(function(dbUser) {
+                            var hbsObject = {
+                                movies: userWatchList,
+                                user: req.user,
+                                username: dbUser.username
+                            };
+                            console.log(hbsObject);
+                            res.render("watchlist", hbsObject);
+                        });
+                    });
+                }
             });
         }
         else {
@@ -57,13 +69,26 @@ module.exports = function (app) {
                     watched: true
                 }
             }).then(function(dbRelation) {
-                findMovies(userCompletedList, dbRelation, function (userCompletedList) {
-                    var hbsObject = {
-                        movies: userCompletedList
-                    };
-                    console.log(hbsObject);
-                    res.render("completedlist", hbsObject);
-                });
+                if (dbRelation.length === 0) {
+                    res.render("index");
+                }
+                else {
+                    findMovies(userCompletedList, dbRelation, function (userCompletedList) {
+                        db.user.findOne({
+                            where: {
+                                id: req.user.id
+                            }
+                        }).then(function (dbUser) {
+                            var hbsObject = {
+                                movies: userCompletedList,
+                                user: req.user,
+                                username: dbUser.username
+                            };
+                            console.log(hbsObject);
+                            res.render("completedlist", hbsObject);
+                        });
+                    });
+                }
             });
         }
         else {
@@ -119,5 +144,25 @@ module.exports = function (app) {
         db.movie.create(newMovies).then(function(dbMovies) {
             res.json(dbMovies);
         });
+    });
+    app.post("/addRelation", function (req, res) {
+        if (req.user) {
+            var newRelation = {
+                userId: req.user.id,
+                movieId: req.body.movieId,
+                watched: req.body.watched
+            };
+            db.relation.create(newRelation).then(function(dbRelation) {
+                console.log("Relationship added");
+                res.json({
+                    code: "Successfully added"
+                });
+            });
+        }
+        else {
+            res.json({
+                code: "You must be logged in"
+            });
+        }
     });
 };

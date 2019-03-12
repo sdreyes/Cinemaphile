@@ -169,16 +169,30 @@ module.exports = function (app) {
     });
     app.post("/addRelation", function (req, res) {
         if (req.user) {
-            var newRelation = {
-                userId: req.user.id,
-                movieId: req.body.movieId,
-                watched: req.body.watched
-            };
-            db.relation.create(newRelation).then(function(dbRelation) {
-                console.log("Relationship added");
-                res.json({
-                    code: "Successfully added"
-                });
+            db.relation.findOne({
+                where: {
+                    userId: req.user.id,
+                    movieId: req.body.movieId
+                }
+            }).then(function (dbRelation) {
+                if (dbRelation) {
+                    res.json({
+                        code: "This movie is already in a list"
+                    });
+                }
+                else {
+                    var newRelation = {
+                        userId: req.user.id,
+                        movieId: req.body.movieId,
+                        watched: req.body.watched
+                    };
+                    db.relation.create(newRelation).then(function(dbRelation) {
+                        console.log("Relationship added");
+                        res.json({
+                            code: "Successfully added"
+                        });
+                    });
+                }
             });
         }
         else {

@@ -84,11 +84,11 @@ module.exports = function (app) {
             });
         }
     });
-    app.delete("/relation/:id", function(req, res) {
-        db.relation/destroy({
+    app.delete("/relation/:movieId", function(req, res) {
+        db.relation.destroy({
             where: {
                 userId: req.user.id,
-                movieId: req.params.id
+                movieId: req.params.movieId
             }
         }).then(function(dbRelation) {
             res.json({

@@ -6,7 +6,7 @@ $(function() {
             url: "/logout",
             type: "GET",
             success: function(result){
-                console.log("logged out");
+                console.log("Logged out");
                 location.reload();
             },
             error: function(err) {

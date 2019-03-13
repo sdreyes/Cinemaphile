@@ -1,4 +1,3 @@
-console.log("This is Dashboard.js");
 $(function() {
 
     $("#searchButton").on("click", function(event) {
@@ -8,11 +7,9 @@ $(function() {
         // Save the book they typed into the book-search input
         var movieSearched = $("#searchbox").val().trim();
         
-        console.log(movieSearched);
         // Make an AJAX get request to our api, including the user's book in the url
         $.get("/api/movie/" + movieSearched, function(data) {
             
-            console.log(data);
             // Call our renderBooks function to add our books to the page
             renderMovies(data);
             

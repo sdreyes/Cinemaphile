@@ -29,12 +29,12 @@ module.exports = function (app) {
 
     app.get("/api/movie/:movieTitle", function (req, res) {
         var movieTitle = req.params.movieTitle;
-        var searchedMovies = [];
         db.movie.findAll({
             where: {
                 title: db.sequelize.where(db.sequelize.fn("LOWER", db.sequelize.col("title")), "LIKE", "%" + movieTitle + "%")
             }
         }).then(function (dbMovies) {
+            console.log(dbMovies);
             res.json(dbMovies);
         });
     });

@@ -35,7 +35,7 @@
 <body>
   <nav class="navbar navbar-light bg-dark">
     <a class="navbar-brand">
-    <img src="/assets/images/icon.png" width="100" height="100" class="d-inline-block align-top" alt="Icon">
+      <img src="/assets/images/icon.png" width="100" height="100" class="d-inline-block align-top" alt="Icon">
     </a>
     <h1>Cinemaphile</h1>
     <form class="form-inline my-2 my-lg-0">
@@ -47,11 +47,11 @@
   <div class="row" id="page">
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-center" id="box">
       {{#if user}}
-        {{> sidebar/loggedin}}
+      {{> sidebar/loggedin}}
       {{/if}}
 
       {{#unless user}}
-        {{> sidebar/loggedout}}
+      {{> sidebar/loggedout}}
       {{/unless}}
     </div>
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -60,6 +60,6 @@
           {{{body}}}
         </div>
       </div>
-    </div>
 </body>
+
 </html>

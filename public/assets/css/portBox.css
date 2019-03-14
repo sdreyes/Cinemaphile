@@ -29,7 +29,8 @@ portBox CSS
 
 .portBox {
 	max-width:1280px;
-	position: fixed;
+	position: absolute;
+	margin-left:-20%;
 	display:none;
 	background: #ffffff;
 	z-index: 1001;

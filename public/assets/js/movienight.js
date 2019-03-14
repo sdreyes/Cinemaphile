@@ -1,20 +1,20 @@
 console.log("hi");
 
-$(function() {
-    $("#logout").on("click", function(event) {
+$(function () {
+    $("#logout").on("click", function (event) {
         $.ajax({
             url: "/logout",
             type: "GET",
-            success: function(result){
+            success: function (result) {
                 console.log("Logged out");
                 location.reload();
             },
-            error: function(err) {
+            error: function (err) {
                 console.log("Error logging out");
             }
         });
     });
-    $("#signup-btn").on("click", function(event) {
+    $("#signup-btn").on("click", function (event) {
         // event.preventDefault();
 
         var newUser = {
@@ -25,12 +25,12 @@ $(function() {
         $.ajax("/signup", {
             type: "POST",
             data: newUser
-        }).then(function() {
+        }).then(function () {
             console.log("New user signed up.");
         });
     });
 
-    $(".move-to-watch-list").on("click", function(event) {
+    $(".move-to-watch-list").on("click", function (event) {
         event.preventDefault();
         var movie = {
             id: $(this).data("id")
@@ -39,14 +39,14 @@ $(function() {
             type: "PUT",
             data: movie
         }).then(
-            function() {
+            function () {
                 // Reload the page to get the updated list
                 location.reload();
             }
         );
     });
 
-    $(".move-to-completed-list").on("click", function(event) {
+    $(".move-to-completed-list").on("click", function (event) {
         event.preventDefault();
         var movie = {
             id: $(this).data("id")
@@ -55,14 +55,14 @@ $(function() {
             type: "PUT",
             data: movie
         }).then(
-            function() {
+            function () {
                 // Reload the page to get the updated list
                 location.reload();
             }
         );
     });
 
-    $("#signin-btn").on("click", function(event) {
+    $("#signin-btn").on("click", function (event) {
         var user = {
             username: $("#username-signin").val().trim(),
             password: $("#password-signin").val().trim()
@@ -71,24 +71,24 @@ $(function() {
         $.ajax("/signin", {
             type: "POST",
             data: user
-        }).then(function() {
+        }).then(function () {
             console.log("User signed in.");
         });
     });
 
-    $(".delete-from-list").on("click", function(event) {
+    $(".delete-from-list").on("click", function (event) {
         event.preventDefault();
         var movieId = $(this).data("id");
         $.ajax({
             type: "DELETE",
             url: "/relation/" + movieId
-        }).then(function() {
+        }).then(function () {
             location.reload();
         });
     });
 
     //ADDING ONCLICK FUNCTION FOR ADD MOVIE BUTTON
-    $(document).on("click", "#addMovie-btn", function(event) {
+    $(document).on("click", "#addMovie-btn", function (event) {
         event.preventDefault();
 
         //CREATE OBJ WITH USER INPUT 
@@ -110,9 +110,9 @@ $(function() {
                 type: "POST",
                 data: movie
             }).then(added);
-    
-    
-            function added(){
+
+
+            function added() {
                 $("#addNewMovie_form").empty();
                 $("#addNewMovie").append("Movie added");
             }

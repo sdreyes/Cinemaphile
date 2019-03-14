@@ -1,6 +1,6 @@
 html, body{
     background-color:white;
-    height: 100%;
+    height: 100vw;
 }
 
 .row {
@@ -30,7 +30,7 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 #box{
     background-color:black;
-    height: 100%;
+    height: 100vw;
 }
 
 #logout{

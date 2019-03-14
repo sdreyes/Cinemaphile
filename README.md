@@ -13,15 +13,9 @@ Create an account and log in. Then, search for movies and add to your heart's co
 
 ![Search Page](public\assets\images\readme-images\homepage.png)
 
-### Initial Configuration
-
-Some projects require initial configuration (e.g. access tokens or keys, `npm i`).
-This is the section where you would document those requirements.
-
 ## Developing
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+To develop the project further:
 
 ```shell
 git clone https://github.com/sdreyes/Project-2.git
@@ -38,29 +32,6 @@ Create your MySQL database and edit config.js to match your new database credent
 * Create an account and log in
 * Add movies to your own personal lists
 * Remove movies from your personal lists
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
-
-#### Argument 1
-Type: `String`  
-Default: `'default value'`
-
-State what an argument does and how you can use it. If needed, you can provide
-an example below.
-
-Example:
-```bash
-awesome-project "Some other value"  # Prints "You're nailing this readme!"
-```
-
-#### Argument 2
-Type: `Number|Boolean`  
-Default: 100
-
-Copy-paste as many of these as you need.
 
 ## Links
 

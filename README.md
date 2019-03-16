@@ -1,4 +1,4 @@
-![Cinemaphile Logo](assets\images\readme-images\logo.png)
+![Cinemaphile Logo](public/assets/images/readme-images/logo.png)
 
 # Cinemaphile
 > A web application that tracks the movies you watch, and want to watch!
@@ -11,7 +11,7 @@ This application uses Node.js and Express.js to host the server. Passport.js and
 
 Create an account and log in. Then, search for movies and add to your heart's content!
 
-![Search Page](assets\images\readme-images\homepage.png)
+![Search Page](public/assets/images/readme-images/homepage.png)
 
 ## Developing
 

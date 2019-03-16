@@ -9,9 +9,13 @@ This application uses Node.js and Express.js to host the server. Passport.js and
 
 ## Getting started
 
-Create an account and log in. Then, search for movies and add to your heart's content!
+Create an account and log in. Then, search for movies and add them to your lists!
 
-![Search Page](public/assets/images/readme-images/homepage.png)
+![Search Page](public/assets/images/readme-images/lists.gif)
+
+Don't see the movie you're searching for? No problem! Add it to the database with the "Add New Movie" button.
+
+![Add New Movie](public/assets/images/readme-images/add-movie.gif)
 
 ## Developing
 

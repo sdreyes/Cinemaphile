@@ -1,3 +1,4 @@
+group: edge
 language: node_js
 node_js: "8"
 branches:
@@ -8,8 +9,3 @@ cache:
     - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
-
-  addons:
-  apt:
-    packages:
-      - mysql-server-5.5
